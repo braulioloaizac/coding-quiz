@@ -42,16 +42,17 @@ var timerEl = document.querySelector("#timer");
 var button = document.querySelector("#button");
 var body = document.body;
 var header = document.querySelector("#welcome-text");
+var correctasanswers = document.querySelector("#correct-answers");
 
 var questionIndex = 0;
 var correctCount = 0;
-var time = 20;
+var time = 10;
 var intervalID;
 
 function welcomeScreen(){
   
-  header.remove();
-  button.remove();
+  header.setAttribute("class","hide");
+  button.setAttribute("class","hide");
   renderQuestion();
 }
 
@@ -105,8 +106,6 @@ function nextQuestion(){
 
 }
 
-
-
 function checkAnswer(event){
   if(event.target.matches("li")){
 
@@ -130,7 +129,15 @@ function checkAnswer(event){
 
 function endQuiz() {
   clearInterval(intervalID);
-  body.innerHTML = "Game over, Your score is " + correctCount;
+  
+  questionEl.setAttribute("class", "hide");
+  optionListEl.setAttribute("class", "hide");
+  questionResultEl.setAttribute("class", "hide");
+
+  var endscreen = document.getElementById("endgame");
+  endscreen.classList.remove("hide");
+  correctasanswers.textContent = correctCount;
+  
 }
 
 button.addEventListener("click", welcomeScreen);
