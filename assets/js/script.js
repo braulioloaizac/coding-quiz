@@ -33,20 +33,23 @@ var questions = [
   }
 ];
 
-
+var counter = document.querySelector("#counter");
+var highscores = document.querySelector("#high-scores")
 var questionsection = document.querySelector("#question-section")
 var questionEl = document.querySelector("#question");
 var optionListEl = document.querySelector("#option-list");
 var questionResultEl = document.querySelector("#question-result");
 var timerEl = document.querySelector("#timer");
-var button = document.querySelector("#button");
+var button = document.querySelector("#button1");
+var submit = document.querySelector("#submit")
+var hsbutton = document.querySelector("#button2");
 var body = document.body;
 var header = document.querySelector("#welcome-text");
 var correctasanswers = document.querySelector("#correct-answers");
 
 var questionIndex = 0;
 var correctCount = 0;
-var time = 10;
+var time = 60;
 var intervalID;
 
 function welcomeScreen(){
@@ -86,8 +89,9 @@ function renderQuestion() {
 }
 
 function updateTime() {
-  timerEl.textContent = time;
+
   time--;
+  timerEl.textContent = time;
   if(time <= 0){
     endQuiz();
   }
@@ -118,11 +122,11 @@ function checkAnswer(event){
 
     else{
       questionResultEl.textContent = "Incorrect";
-      time = time - 2 ;
+      time = time - 10;
+      timerEl.textContent = time;
     }
 
     setTimeout(nextQuestion, 2000);
-
   }
 }
 
@@ -130,6 +134,8 @@ function checkAnswer(event){
 function endQuiz() {
   clearInterval(intervalID);
   
+  counter.setAttribute("class", "hide");
+  highscores.setAttribute("class", "hide");
   questionEl.setAttribute("class", "hide");
   optionListEl.setAttribute("class", "hide");
   questionResultEl.setAttribute("class", "hide");
@@ -137,8 +143,27 @@ function endQuiz() {
   var endscreen = document.getElementById("endgame");
   endscreen.classList.remove("hide");
   correctasanswers.textContent = correctCount;
+}
+
+
+function saveScore(){
+
+
+  var name = document.getElementById("name").value;
+
+  if(name != ""){
+
+    var score = {
+      initials: name,
+      score: correctCount
+    };
+
+    localStorage.setItem("highscore", JSON.stringify(score));
+  }
   
 }
 
+
 button.addEventListener("click", welcomeScreen);
 optionListEl.addEventListener("click", checkAnswer);
+submit.addEventListener("click", saveScore);

@@ -10,8 +10,8 @@
     <body>
       
       <div class="stats">
-        <a href="#">High Scores</a>
-        <div>Time: <span id="timer">0</span></div>
+        <a href="#" id="high-scores">High Scores</a>
+        <div id="counter">Time: <span id="timer">0</span></div>
       </div>
 
       <div id="welcome-text">
@@ -19,7 +19,7 @@
         <p>Try to answer the following code-related questions within the time
           limit. Keep in mind that incorrect answers will penalize your
           score/time by ten seconds!</p>
-          <button id="button">Start Quiz</button>
+          <button id="button1">Start Quiz</button>
       </div>
 
       <div id="question-section">
@@ -31,14 +31,17 @@
         <div id="question-result"></div>
 
         <div id="endgame" class="hide">
-          <form>
+          
             <h2>Game Over!!</h2>
             <h3>Your Score is: <span id="correct-answers"></span></h3>
-            <input type="text" placeholder="Enter initials">
-            <button type="submit" class="button">Submit</button>
-            <button>View Highscores</button>
-          </form>
+            <form>
+              <input type="text" placeholder="Enter initials" id="name">
+              <button id="submit" type="submit" class="button">Submit</button>
+            </form>
+            <button id="button2">View Highscores</button>
+          
         </div>
+
         <script src="./assets/js/script.js"></script>
 
     </div>
