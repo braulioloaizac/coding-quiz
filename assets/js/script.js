@@ -42,7 +42,6 @@ var questionResultEl = document.querySelector("#question-result");
 var timerEl = document.querySelector("#timer");
 var button = document.querySelector("#button1");
 var submit = document.querySelector("#submit")
-var hsbutton = document.querySelector("#button2");
 var body = document.body;
 var header = document.querySelector("#welcome-text");
 var correctasanswers = document.querySelector("#correct-answers");
@@ -148,21 +147,24 @@ function endQuiz() {
 
 function saveScore(){
 
-
   var name = document.getElementById("name").value;
+  //Gets the highscores from the localStorage and transforms them to an array
+  var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
 
+  //Check if the name isn't empty
   if(name != ""){
-
-    var score = {
-      initials: name,
-      score: correctCount
-    };
-
-    localStorage.setItem("highscore", JSON.stringify(score));
+    //Creates an array with the initials and the score
+    var score = {name, correctCount};
+    //adds the new score to the previously scores
+    highscores.push(score);
+    //Adds the new "list" to the local storage
+    localStorage.setItem("highscores",JSON.stringify(highscores));
+    
   }
   
 }
 
+// localStorage.clear()
 
 button.addEventListener("click", welcomeScreen);
 optionListEl.addEventListener("click", checkAnswer);
