@@ -164,7 +164,7 @@ function saveScore(){
   
 }
 
-// localStorage.clear()
+
 
 button.addEventListener("click", welcomeScreen);
 optionListEl.addEventListener("click", checkAnswer);

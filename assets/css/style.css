@@ -18,6 +18,7 @@ body{
 
 .choices {
     list-style: none;
+    padding: 5px 10px;
   }
 
 h1{
@@ -29,11 +30,6 @@ p{
     text-align: center;
     padding: 10px 60px;
 }
-
-#welcome-text{
-    
-}
-
 
 button{
     display: inline-block;
