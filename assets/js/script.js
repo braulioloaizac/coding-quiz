@@ -51,21 +51,24 @@ var correctCount = 0;
 var time = 60;
 var intervalID;
 
+//First screen when code starts and when the button is clicked
+//it hides the header and the button
 function welcomeScreen(){
   
   header.setAttribute("class","hide");
   button.setAttribute("class","hide");
+  //callback to renderQuestion
   renderQuestion();
 }
 
 function renderQuestion() {
-  
+  //Checks when the time is 0 and if the statement is true finishes the function
   if(time == 0){
     updateTime();
     return;
   }
 
-
+  //Set the execution of the updateTime function every 1000 miliseconds
   intervalID = setInterval(updateTime,1000);
 
     //Selects the question
@@ -88,16 +91,20 @@ function renderQuestion() {
 }
 
 function updateTime() {
-
+  //Every 1000ms the time counter substracts 1 to the actual counter
+  // and prints it
   time--;
   timerEl.textContent = time;
+  //Finishes the quiz when the time is 0
   if(time <= 0){
     endQuiz();
   }
 }
 
+//Increase the questions counter to render all the questions
 function nextQuestion(){
   questionIndex++;
+  //Checks the length of the questions object to prevent an error
   if(questionIndex < questions.length){
     renderQuestion();
   }
@@ -109,19 +116,24 @@ function nextQuestion(){
 
 }
 
+//Event delegation
+//When the user clicks on a generated "li" the function checks if 
+//the clicked element corresponds to the answer of the actual question
 function checkAnswer(event){
+  //Checks if the clicked element is a "li"
   if(event.target.matches("li")){
-
+    //Pauses the timer
     clearInterval(intervalID);
 
     if(event.target.textContent === questions[questionIndex].answer){
       correctCount++;
       questionResultEl.textContent = "Correct";
-      
+      questionResultEl.style.backgroundColor = "green";
     }
 
     else{
       questionResultEl.textContent = "Incorrect";
+      questionResultEl.style.backgroundColor = "red";
       time = time - 10;
       timerEl.textContent = time;
     }
