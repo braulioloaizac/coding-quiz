@@ -117,6 +117,7 @@ function checkAnswer(event){
     if(event.target.textContent === questions[questionIndex].answer){
       correctCount++;
       questionResultEl.textContent = "Correct";
+      
     }
 
     else{

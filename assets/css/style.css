@@ -7,20 +7,6 @@ body{
     text-align: center;
 }
 
-.hide{
-    display: none;
-}
-
-.stats{
-    display: flex;
-    justify-content: space-between;
-}
-
-.choices {
-    list-style: none;
-    padding: 5px 10px;
-  }
-
 h1{
     text-align: center;
     font-weight: 700;
@@ -29,6 +15,14 @@ h1{
 p{
     text-align: center;
     padding: 10px 60px;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #67597c;
 }
 
 button{
@@ -43,7 +37,63 @@ button{
     border-radius: 5px;
 }
 
+button:hover{
+    background-color: #67597c;
+}
+
 ul{
     margin: 5px;
     padding: 3px 4px;
 }
+
+li{
+    font-weight: 600;
+    padding: 5px  0px;
+    margin: 5px 0px;
+    text-transform: capitalize;
+    background-color: white;
+    border-radius: 5px;
+    
+}
+
+li:hover{
+    background-color: #4a6cdb;
+    border-radius: 5px;
+    cursor:pointer;
+}
+
+.lialt{
+    list-style: none;
+    font-weight: 600;
+    padding: 5px  0px;
+    text-transform: capitalize;
+    background-color: white;
+    
+}
+
+.lialt:hover{
+    background-color: white;
+    border-radius: 0px;
+}
+
+div{
+    margin: 10px 0px;
+    font-weight: 700;
+}
+
+.hide{
+    display: none;
+}
+
+.stats{
+    display: flex;
+    justify-content: space-between;
+}
+
+.choices {
+    list-style: none;
+    padding: 5px 10px;
+  }
+
+
+
