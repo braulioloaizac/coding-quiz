@@ -1,3 +1,4 @@
+//Object with the questions
 var questions = [
   {
     title: "Commonly used data types DO NOT include:",
@@ -33,6 +34,7 @@ var questions = [
   }
 ];
 
+//Global variables and selectors
 var counter = document.querySelector("#counter");
 var highscores = document.querySelector("#high-scores")
 var questionsection = document.querySelector("#question-section")
@@ -184,8 +186,7 @@ function saveScore(){
   
 }
 
-
-
+//Events that works as functions callbacks
 button.addEventListener("click", welcomeScreen);
 optionListEl.addEventListener("click", checkAnswer);
 submit.addEventListener("click", saveScore);
