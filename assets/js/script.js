@@ -125,8 +125,10 @@ function checkAnswer(event){
     //Pauses the timer
     clearInterval(intervalID);
 
+    //Checks if the element clicked corresponds to the answer of that question
     if(event.target.textContent === questions[questionIndex].answer){
       correctCount++;
+      //Displays the correct text as feedback
       questionResultEl.textContent = "Correct";
       questionResultEl.style.backgroundColor = "green";
     }
@@ -134,24 +136,27 @@ function checkAnswer(event){
     else{
       questionResultEl.textContent = "Incorrect";
       questionResultEl.style.backgroundColor = "red";
+      //If the user answers a question wrong it substracts 10 seconds of the time
       time = time - 10;
       timerEl.textContent = time;
     }
-
+    //2 Seconds delay between each question
     setTimeout(nextQuestion, 2000);
   }
 }
 
 
 function endQuiz() {
+
   clearInterval(intervalID);
-  
+  //Hides the previously layout 
   counter.setAttribute("class", "hide");
   highscores.setAttribute("class", "hide");
   questionEl.setAttribute("class", "hide");
   optionListEl.setAttribute("class", "hide");
   questionResultEl.setAttribute("class", "hide");
 
+  //Shows the endgame screen
   var endscreen = document.getElementById("endgame");
   endscreen.classList.remove("hide");
   correctasanswers.textContent = correctCount;
@@ -172,6 +177,8 @@ function saveScore(){
     highscores.push(score);
     //Adds the new "list" to the local storage
     localStorage.setItem("highscores",JSON.stringify(highscores));
+
+    window.location.href = "highscores.html";
     
   }
   
